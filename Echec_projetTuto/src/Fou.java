@@ -24,4 +24,5 @@ public class Fou extends Piece {
 		if(this.estNoir()) {return "FN";}
 		else{return "FB";}
 	}
+	
 }

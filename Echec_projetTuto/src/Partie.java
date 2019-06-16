@@ -27,6 +27,13 @@ public class Partie {
 		this.echequier.initialise();
 	}
 	
+	public Echequier getEchequier() {
+		return echequier;
+	}
+	public boolean getTourNoir() {
+		return tourNoir;
+	}
+	
 	public boolean saisieValide(String s) {
 		int xPos, yPos, xDes, yDes;
 		if(s.equals("m")) {

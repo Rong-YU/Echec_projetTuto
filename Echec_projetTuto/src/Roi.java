@@ -28,5 +28,4 @@ public class Roi extends Piece {
 		if(this.estNoir()) {return "RN";}
 		else{return "RB";}
 	}
-
 }
