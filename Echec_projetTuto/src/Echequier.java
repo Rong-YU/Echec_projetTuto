@@ -138,10 +138,14 @@ public class Echequier {
 		else if(echequier[yDes][xDes].getPiece() != null && echequier[yPos][xPos].getPiece().estNoir() == echequier[yDes][xDes].getPiece().estNoir()) {
 			return false;
 		}
-		else if(echequier[yPos][xPos].getPiece().getNom() == "Pion" && xPos != xDes) {
-				if (echequier[yDes][xDes].getPiece() == null || Math.abs(yDes - yPos) >1) {
-				return false;
+		else if(echequier[yPos][xPos].getPiece().getNom() == "Pion" ) {
+				if (xPos != xDes && (echequier[yDes][xDes].getPiece() == null || Math.abs(yDes - yPos) >1)) {
+					return false;
 				}
+				else if(xPos == xDes && echequier[yDes][xDes].getPiece() != null) {
+					return false;
+				}
+				
 			
 		}
 		else if(Math.abs(xDes - xPos) <= 1 && Math.abs(yDes - yPos) <= 1 || this.echequier[yPos][xPos].getPiece().getNom() == "Cavalier") { // si la destination est la case a cote

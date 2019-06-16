@@ -35,6 +35,11 @@ public class CoupPossible {
 				pointMax = i;
 			}
 		}
+		if(listCoup.get(pointMax).getPoint() == 0) {
+			Random r = new Random();
+			pointMax = r.nextInt((listCoup.size()-1));
+			System.out.println(pointMax);
+		}
 		return listCoup.get(pointMax).getEchequier();
 	}
 	
@@ -46,16 +51,5 @@ public class CoupPossible {
 	
 	public int nombreCoup() {
 		return this.listCoup.size();
-	}
-	
-	public static void main(String[] args) {
-		/*
-		Echequier echequier = new Echequier();
-		echequier.initialise();
-		CoupPossible c = new CoupPossible(echequier,false);
-		c.CalculeCoupPossible();
-		c.afficherCoupPossible();
-		System.out.println(c.nombreCoup());
-		*/
 	}
 }
