@@ -21,12 +21,12 @@ public class Dame extends Piece {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		/*
-		if(this.estNoir()) {return "\u265B";}
-		else{return "\u2655";}
-		*/
-		if(this.estNoir()) {return "DN";}
-		else{return "DB";}
+		
+		if(this.estNoir()) {return "\u265B ";}
+		else{return "\u2655 ";}
+		
+//		if(this.estNoir()) {return "DN";}
+//		else{return "DB";}
 	}
 
 }

@@ -241,7 +241,8 @@ public class Echequier {
 		this.echequier[yPos][xPos].setPiece(null);
 		return deadPiece;
 	}
-	
+//	private static final char light='\u2591';
+//	  private static final char dark='\u2593';
 	public void afficher() {
 		String s = "\n   ";
 		s+="[a][b][c][d][e][f][g][h]\n";
@@ -251,9 +252,18 @@ public class Echequier {
 				if (echequier[i][j].getPiece() != null){
 					s += echequier[i][j].getPiece().toString()+" ";
 					}
-				else {
-					s+= "__ ";
-				}
+//				else {
+//					s+= "__ ";
+//				}
+				else if ((i+j)%2 == 1) {
+			          // print two light chars (light and dark are defined in the fields)
+			          s+="\u2591";
+			          s+="\u2591";
+			        } else {
+			          // else, print two dark chars
+			          s+="\u2593";
+			          s+="\u2593";
+			        }
 			}
 			s += "[" + (8-i) + "]\n";
 		}

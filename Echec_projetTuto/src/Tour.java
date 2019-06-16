@@ -20,12 +20,14 @@ public class Tour extends Piece {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
+		
+		if(this.estNoir()) {return "\u265C ";}
+		else{return "\u2656 ";}
+		
 		/*
-		if(this.estNoir()) {return "\u265C";}
-		else{return "\u2656";}
-		*/
 		if(this.estNoir()) {return "TN";}
 		else{return "TB";}
+		*/
 	}
 
 }

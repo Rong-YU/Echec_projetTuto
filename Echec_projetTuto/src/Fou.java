@@ -17,12 +17,12 @@ public class Fou extends Piece {
 		return this.nom;
 	}
 	public String toString() {
-		/*
-		if(this.estNoir()) {return "\u265D";}
-		else{return "\u2657";}
-		*/
-		if(this.estNoir()) {return "FN";}
-		else{return "FB";}
+		
+		if(this.estNoir()) {return "\u265D ";}
+		else{return "\u2657 ";}
+		
+//		if(this.estNoir()) {return "FN";}
+//		else{return "FB";}
 	}
 	
 }
