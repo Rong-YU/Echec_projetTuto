@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class Echequier {
 	
@@ -119,7 +119,6 @@ public class Echequier {
 						if(parcoursValide(xPos,yPos,xDes,yDes)&& pieceNoir(xPos, yPos) == !estNoir) {
 							Echequier newEchequier = new Echequier(this);
 							newEchequier.deplacerPiece(xPos, yPos, xDes, yDes);
-							newEchequier.afficher();
 							if(!newEchequier.check(estNoir)) {
 								return false;
 							}
@@ -128,6 +127,7 @@ public class Echequier {
 				}
 			}
 		}
+		afficher();
 		return true;
 	}
 	
@@ -190,42 +190,50 @@ public class Echequier {
 		}
 		else if (xDes > xPos) {  //en bas a droite
 			if(yDes > yPos) {
-				for(int i = yPos+1; i<yDes; i++) {
-					for(int j = xPos+1; j<xDes; j++) {
-						if(echequier[i][j].getPiece() != null) {
-							return false;
-						}
+				int i = yPos+1;
+				int j = xPos+1;
+				while(i<yDes || j<xPos) {
+					if(echequier[i][j].getPiece() != null) {
+						return false;
 					}
+					i++;
+					j++;
 				}
 			}
 			else { //en haut a droite
-				for(int i = yPos-1; i>yDes; i--) {
-					for(int j = xPos+1; j<xDes; j++) {
-						if(echequier[i][j].getPiece() != null) {
-							return false;
-						}
+				int i = yPos-1;
+				int j = xPos+1;
+				while(i>yDes || j<xPos) {
+					if(echequier[i][j].getPiece() != null) {
+						return false;
 					}
+					i--;
+					j++;
 				}
 			}
 		}
 		
 		else if (xDes < xPos) { // en bas a gauche
 			if(yDes > yPos) {
-				for(int i = yPos+1; i<yDes; i++) {
-					for(int j = xPos-1; j>xDes; j--) {
-						if(echequier[i][j].getPiece() != null) {
-							return false;
-						}
+				int i = yPos+1;
+				int j = xPos-1;
+				while(i<yDes || j>xPos) {
+					if(echequier[i][j].getPiece() != null) {
+						return false;
 					}
+					i++;
+					j--;
 				}
 			}
 			else { // en haut a gauche
-				for(int i = yPos-1; i>yDes; i--) {
-					for(int j = xPos-1; j>xDes; j--) {
-						if(echequier[i][j].getPiece() != null) {
-							return false;
-						}
+				int i = yPos-1;
+				int j = xPos-1;
+				while(i>yDes || j>xPos) {
+					if(echequier[i][j].getPiece() != null) {
+						return false;
 					}
+					i--;
+					j--;
 				}
 			}
 		}
@@ -241,6 +249,60 @@ public class Echequier {
 		this.echequier[yPos][xPos].setPiece(null);
 		return deadPiece;
 	}
+	
+	public void promotion(boolean tourNoir) {
+		boolean pion = false;
+		int x, y;
+		x=0;
+		y=0;
+		for(int i = 0; i < 8; i++) {
+			if(tourNoir) {
+				if(echequier[7][i].getPiece() instanceof Pion) {
+					pion = true;
+					x=i;
+					y=7;
+					break;
+				}
+			}
+			else {
+				if(echequier[0][i].getPiece() instanceof Pion) {
+					pion = true;
+					x=i;
+					y=0;
+					break;
+				}
+			}
+		}
+		if(pion) {
+			afficher();
+			Scanner inputkb = new Scanner(System.in);
+			System.out.println("choisir la piece souhaitee");
+			System.out.println("[1]Dame");
+			System.out.println("[2]Tour");
+			System.out.println("[3]Fou");
+			System.out.println("[4]Cavalier");
+			int n = -1;
+			while(n<1 || n >4) n = inputkb.nextInt();
+			if(tourNoir) {
+				switch(n) {
+				case 1: this.echequier[y][x].setPiece(new Dame(tourNoir));break;
+				case 2: this.echequier[y][x].setPiece(new Tour(tourNoir));break;
+				case 3: this.echequier[y][x].setPiece(new Fou(tourNoir));break;
+				case 4: this.echequier[y][x].setPiece(new Cavalier(tourNoir));break;
+				}
+			}
+			else {
+				switch(n) {
+				case 1: this.echequier[y][x].setPiece(new Dame(tourNoir));break;
+				case 2: this.echequier[y][x].setPiece(new Tour(tourNoir));break;
+				case 3: this.echequier[y][x].setPiece(new Fou(tourNoir));break;
+				case 4: this.echequier[y][x].setPiece(new Cavalier(tourNoir));break;
+				}
+			}
+		}
+	}
+	
+	
 	public void afficher() {
 		String s = "\n    ";
 		

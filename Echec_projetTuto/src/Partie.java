@@ -58,7 +58,8 @@ public class Partie {
 						return true;
 					}
 					else {
-						System.out.println("check! resaisir!");
+						this.echequier.afficher();
+						System.out.println("le roi est encore en danger! resaisir!!");
 						return false;
 					}
 				}
@@ -74,7 +75,7 @@ public class Partie {
 	public int menu() {
 		Scanner input = new Scanner(System.in);
 		int n = -1;
-		while (n <0 || n >5) {
+		while (n <0 || n >6) {
 			
 			System.out.println("saisir le numero d'action");
 			System.out.println("[0] reprendre la partie en cours");
@@ -83,6 +84,7 @@ public class Partie {
 			System.out.println("[3] sauvegarder la partie en cours");
 			System.out.println("[4] terminer le jeu");
 			System.out.println("[5] AI");
+			System.out.println("[6] demos");
 			n=input.nextInt();
 		}
 		return n;
@@ -92,13 +94,13 @@ public class Partie {
 		while (true) {
 			this.echequier.afficher();
 				if(check) {
-					System.out.println("CHECK!");
+					System.out.println("le roi est en danger!");
 				}
 				if(this.tourNoir) {
-					System.out.println("tour du noir!");
+					System.out.println("tour du joueur  noir!");
 				}
 				else {
-					System.out.println("tour du blanc!");
+					System.out.println("tour du joueur blanc!");
 					}
 				if((!vsAI && tourNoir) || !tourNoir) {
 					Scanner input = new Scanner(System.in);
@@ -134,6 +136,10 @@ public class Partie {
 							ai = new Ai(this.echequier, 1);
 							continue;
 						}
+						else if(n==6) {
+							demo();
+							continue;
+						}
 					}
 				}
 				else{
@@ -142,23 +148,25 @@ public class Partie {
 				}
 				if(this.echequier.roiMort(tourNoir)) {
 					if(tourNoir) {
-						System.out.println("noir gagne");
+						System.out.println("Le joueur noir gagne");
 					}
 					else {
-						System.out.println("blanc gagne");
+						System.out.println("Le joueur blanc gagne");
 					}
 					break;
 				}
 				if(this.echequier.checkMate(tourNoir)) {
 					if(tourNoir) {
-						System.out.println("CHECK MATE!noir gagne");
+						System.out.println("CHECK MATE! Le joueur noir gagne");
 					}
 					else {
-						System.out.println("CHECK MATE!blanc gagne");
+						System.out.println("CHECK MATE! Le joueur blanc gagne");
 					}
 					break;
 				}
 				check = this.echequier.check(tourNoir);
+				this.echequier.promotion(tourNoir);
+	
 			tourNoir = !tourNoir;
 		}
 	}
@@ -218,7 +226,22 @@ public class Partie {
 		      System.out.println(e);
 		    }
 		  }
-
+	
+	public void demo() {
+		Scanner inputkb = new Scanner(System.in);
+		System.out.println("liste de demos:");
+		System.out.println("[1]Promotion");
+		System.out.println("[2]Echec");
+		System.out.println("[3]EchecEtMat");
+		int n = -1;
+		while(n<1 || n >3) n = inputkb.nextInt();
+		switch(n) {
+		case 1: this.charger("demo_promotion");
+		case 2: this.charger("demo_echec");
+		case 3: this.charger("demo_checkmate");
+		}
+	}
+	
 	public static void main(String[] args) {
 		new Partie();
 	}
