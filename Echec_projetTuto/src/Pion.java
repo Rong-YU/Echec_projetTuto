@@ -40,7 +40,7 @@ public class Pion extends Piece {
 		// TODO Auto-generated method stub
 		
 		if(this.estNoir()) {return "\u265F ";}
-		else{return "\u2659";}
+		else{return "\u2659 ";}
 		
 //		if(this.estNoir()) {return "PN";}
 //		else{return "PB";}

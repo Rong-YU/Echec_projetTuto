@@ -244,13 +244,13 @@ public class Echequier {
 //	private static final char light='\u2591';
 //	  private static final char dark='\u2593';
 	public void afficher() {
-		String s = "\n   ";
-		s+="[a][b][c][d][e][f][g][h]\n";
+		String s = "\n     ";
+		s+="[a] [b] [c] [d] [e] [f] [g] [h]\n";
 		for(int i = 0; i<8; i++) {
 			s += "[" + (8-i) + "] ";
 			for(int j = 0; j<8; j++) {
 				if (echequier[i][j].getPiece() != null){
-					s += echequier[i][j].getPiece().toString()+" ";
+					s += echequier[i][j].getPiece().toString();
 					}
 //				else {
 //					s+= "__ ";
@@ -267,7 +267,7 @@ public class Echequier {
 			}
 			s += "[" + (8-i) + "]\n";
 		}
-		s+="   [a][b][c][d][e][f][g][h]\n";
+		s+="     [a] [b] [c] [d] [e] [f] [g] [h]\n";
 		
 		System.out.println(s);
 	
