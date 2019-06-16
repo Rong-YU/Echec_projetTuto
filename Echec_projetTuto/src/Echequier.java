@@ -259,11 +259,13 @@ public class Echequier {
 			          // print two light chars (light and dark are defined in the fields)
 			          s+="\u2591";
 			          s+="\u2591";
-			        } else {
+			        } 
+				else {
 			          // else, print two dark chars
 			          s+="\u2593";
 			          s+="\u2593";
-			        }
+			   }
+				
 			}
 			s += "[" + (8-i) + "]\n";
 		}
