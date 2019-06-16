@@ -44,7 +44,7 @@ public class Partie {
 			yPos = Math.abs((Character.getNumericValue(s.charAt(1)))-8);
 			xDes = (int)s.charAt(2)-97;			yDes = Math.abs((Character.getNumericValue(s.charAt(3)))-8);
 			if (xPos > 7 || xPos <0 || yPos > 7 || xPos <0 || xDes > 7 || xDes <0 || yDes > 7 || xDes <0) {
-				System.out.println("saisie invalide!");
+				System.out.println("coordonnee invalide!");
 				return false;
 				}
 			
@@ -59,7 +59,7 @@ public class Partie {
 					}
 					else {
 						this.echequier.afficher();
-						System.out.println("le roi est encore en danger! resaisir!!");
+						System.out.println("ECHEC! le roi est encore en danger! resaisir!!");
 						return false;
 					}
 				}
@@ -69,7 +69,7 @@ public class Partie {
 				}
 			}
 		}
-		System.out.println("saisir a2a4 ou m pour le menu");
+		System.out.println("saisir le mouvement(ex: \"a2a4\") ou \"m\" pour le menu");
 		return false;
 	}
 	public int menu() {
@@ -92,19 +92,23 @@ public class Partie {
 	}
 	public void jouer() {
 		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
 			this.echequier.afficher();
-				if(check) {
-					System.out.println("le roi est en danger!");
-				}
 				if(this.tourNoir) {
-					System.out.println("tour du joueur  noir!");
+					if(check) {
+						System.out.println("ECHEC! le roi noir est en danger!");
+					}
+					System.out.println("C'est le tour du joueur noir");
 				}
 				else {
-					System.out.println("tour du joueur blanc!");
+					if(check) {
+						System.out.println("ECHEC! le roi blanc est en danger!");
+					}
+					System.out.println("C'est le tour du joueur blanc");
 					}
 				if((!vsAI && tourNoir) || !tourNoir) {
 					Scanner input = new Scanner(System.in);
-					System.out.println("coordonnee ex: a1b2");
 					String s = "";			
 					while (!saisieValide(s)) {
 							s = input.next();
@@ -157,10 +161,10 @@ public class Partie {
 				}
 				if(this.echequier.checkMate(tourNoir)) {
 					if(tourNoir) {
-						System.out.println("CHECK MATE! Le joueur noir gagne");
+						System.out.println("ECHEC ET MAT! Le joueur noir gagne");
 					}
 					else {
-						System.out.println("CHECK MATE! Le joueur blanc gagne");
+						System.out.println("ECHEC ET MAT! Le joueur blanc gagne");
 					}
 					break;
 				}
