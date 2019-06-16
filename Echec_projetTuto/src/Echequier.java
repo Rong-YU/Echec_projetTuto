@@ -241,35 +241,32 @@ public class Echequier {
 		this.echequier[yPos][xPos].setPiece(null);
 		return deadPiece;
 	}
-//	private static final char light='\u2591';
-//	  private static final char dark='\u2593';
 	public void afficher() {
-		String s = "\n     ";
-		s+="[a] [b] [c] [d] [e] [f] [g] [h]\n";
+		String s = "\n    ";
+		
+		s+="A  B  C  D  E  F  G  H\n";
 		for(int i = 0; i<8; i++) {
-			s += "[" + (8-i) + "] ";
+			s += (8-i) + "  ";
 			for(int j = 0; j<8; j++) {
 				if (echequier[i][j].getPiece() != null){
-					s += echequier[i][j].getPiece().toString()+" ";
+					s += echequier[i][j].getPiece().toString()+"\u2009\u2009";
 					}
 //				else {
 //					s+= "__ ";
 //				}
 				else if ((i+j)%2 == 1) {
-			          // print two light chars (light and dark are defined in the fields)
 			          s+="\u2591";
 			          s+="\u2591";
 			        } 
 				else {
-			          // else, print two dark chars
 			          s+="\u2593";
 			          s+="\u2593";
 			   }
 				
 			}
-			s += "[" + (8-i) + "]\n";
+			s += "  " + (8-i) + "\n";
 		}
-		s+="     [a] [b] [c] [d] [e] [f] [g] [h]\n";
+		s+="    A  B  C  D  E  F  G  H\n";
 		
 		System.out.println(s);
 	

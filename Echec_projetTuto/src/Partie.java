@@ -52,7 +52,7 @@ public class Partie {
 				Echequier newEchequier = new Echequier(this.echequier);
 				newEchequier.deplacerPiece(xPos, yPos, xDes, yDes);
 				if(this.check) {
-					if(!newEchequier.check(tourNoir)) {
+					if(!newEchequier.check(!tourNoir)) {
 						this.echequier.deplacerPiece(xPos,yPos,xDes,yDes);
 						this.check = false;
 						return true;
