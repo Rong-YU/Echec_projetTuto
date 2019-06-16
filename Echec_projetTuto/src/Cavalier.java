@@ -22,8 +22,8 @@ public class Cavalier extends Piece {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		if(this.estNoir()) {return "\u265E ";}
-		else{return "\u2658 ";}
+		if(this.estNoir()) {return "\u265E";}
+		else{return "\u2658";}
 		
 //		if(this.estNoir()) {return "CN";}
 //		else{return "CB";}
