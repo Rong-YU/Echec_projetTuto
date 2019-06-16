@@ -92,7 +92,6 @@ public class Partie {
 	}
 	public void jouer() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
 			System.out.flush();
 			this.echequier.afficher();
 				if(this.tourNoir) {
