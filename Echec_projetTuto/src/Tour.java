@@ -21,8 +21,8 @@ public class Tour extends Piece {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		if(this.estNoir()) {return "\u265C ";}
-		else{return "\u2656 ";}
+		if(this.estNoir()) {return "\u265C";}
+		else{return "\u2656";}
 		
 		/*
 		if(this.estNoir()) {return "TN";}

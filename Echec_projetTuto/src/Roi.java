@@ -22,8 +22,8 @@ public class Roi extends Piece {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		if(this.estNoir()) {return "\u265A ";}
-		else{return "\u2654 ";}
+		if(this.estNoir()) {return "\u265A";}
+		else{return "\u2654";}
 		/*
 		if(this.estNoir()) {return "RN";}
 		else{return "RB";}

@@ -250,7 +250,7 @@ public class Echequier {
 			s += "[" + (8-i) + "] ";
 			for(int j = 0; j<8; j++) {
 				if (echequier[i][j].getPiece() != null){
-					s += echequier[i][j].getPiece().toString();
+					s += echequier[i][j].getPiece().toString()+" ";
 					}
 //				else {
 //					s+= "__ ";

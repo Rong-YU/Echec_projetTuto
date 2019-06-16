@@ -18,8 +18,8 @@ public class Fou extends Piece {
 	}
 	public String toString() {
 		
-		if(this.estNoir()) {return "\u265D ";}
-		else{return "\u2657 ";}
+		if(this.estNoir()) {return "\u265D";}
+		else{return "\u2657";}
 		
 //		if(this.estNoir()) {return "FN";}
 //		else{return "FB";}
